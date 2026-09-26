@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画像ギャラリー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <p class="eyebrow">MY GALLERY</p>
+      <h1>画像ギャラリー</h1>
+      <p class="lead">画像をクリックすると大きく表示できます。</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="toolbar" aria-label="カテゴリ絞り込み">
+      <button class="filter-button active" data-filter="all">すべて</button>
+      <button class="filter-button" data-filter="photo">写真</button>
+      <button class="filter-button" data-filter="art">作品</button>
+      <button class="filter-button" data-filter="other">その他</button>
+    </section>
+
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 My Gallery</p>
+  </footer>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="closeLightbox" class="close-button" aria-label="閉じる">&times;</button>
+    <div class="lightbox-inner">
+      <img id="lightboxImage" src="" alt="">
+      <div class="lightbox-text">
+        <h2 id="lightboxTitle"></h2>
+        <p id="lightboxDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
