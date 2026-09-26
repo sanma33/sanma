@@ -195,3 +195,9 @@ footer {
   .gallery { grid-template-columns: 1fr; }
   .site-header { padding: 46px 0 38px; }
 }
+@media (max-width: 560px) {
+  .lightbox img {
+    max-width: 88%;
+    max-height: 60vh;
+  }
+}
