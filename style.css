@@ -22,18 +22,18 @@ body {
   color: var(--text);
 }
 
-/* ------------------------------
+/* =========================
    全体幅
------------------------------- */
+========================= */
 
 .container {
   width: min(1120px, 92%);
   margin: 0 auto;
 }
 
-/* ------------------------------
+/* =========================
    ヘッダー
------------------------------- */
+========================= */
 
 .site-header {
   padding: 64px 0 52px;
@@ -59,9 +59,9 @@ body {
   opacity: 0.82;
 }
 
-/* ------------------------------
+/* =========================
    カテゴリボタン
------------------------------- */
+========================= */
 
 .toolbar {
   display: flex;
@@ -90,10 +90,10 @@ body {
   border-color: var(--accent);
 }
 
-/* ------------------------------
+/* =========================
    ギャラリー
-   PCは3列
------------------------------- */
+   PCでは3列
+========================= */
 
 .gallery {
   display: grid;
@@ -102,9 +102,9 @@ body {
   padding-bottom: 56px;
 }
 
-/* ------------------------------
+/* =========================
    カード
------------------------------- */
+========================= */
 
 .card {
   overflow: hidden;
@@ -130,10 +130,10 @@ body {
   cursor: zoom-in;
 }
 
-/* ------------------------------
+/* =========================
    一覧画像
-   全部4:3で統一
------------------------------- */
+   すべて4:3で統一
+========================= */
 
 .card img,
 .placeholder {
@@ -152,9 +152,9 @@ body {
   font-weight: 700;
 }
 
-/* ------------------------------
-   カードの文字
------------------------------- */
+/* =========================
+   カード文字
+========================= */
 
 .card-body {
   padding: 18px;
@@ -179,9 +179,9 @@ body {
   line-height: 1.7;
 }
 
-/* ------------------------------
+/* =========================
    フッター
------------------------------- */
+========================= */
 
 footer {
   text-align: center;
@@ -190,9 +190,9 @@ footer {
   background: #111827;
 }
 
-/* ------------------------------
-   拡大表示
------------------------------- */
+/* =========================
+   拡大表示 全体
+========================= */
 
 .lightbox {
   position: fixed;
@@ -202,66 +202,76 @@ footer {
   display: none;
   place-items: center;
 
-  padding: 20px;
+  padding: 2vh 2vw;
 
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .lightbox.open {
   display: grid;
 }
 
-/* 拡大表示の全体枠 */
+/* =========================
+   PCの拡大表示枠
+   ほぼ画面いっぱい
+========================= */
 
 .lightbox-inner {
-  width: min(900px, 92vw);
-  max-height: 90vh;
+  width: 96vw;
+  height: 92vh;
 
-  overflow: auto;
+  max-width: none;
+  max-height: none;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
 
   background: #111827;
   color: white;
 
   border-radius: 16px;
 
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* ------------------------------
-   拡大画像
-   横幅・縦幅を統一
------------------------------- */
+/* =========================
+   PCの拡大画像
+   大きく表示
+========================= */
 
 .lightbox img {
   display: block;
 
-  width: auto;
-  height: auto;
-
-  max-width: 95vw;
-  max-height: 82vh;
+  width: 100%;
+  height: 80vh;
 
   object-fit: contain;
   object-position: center;
 
-  margin: 20px auto 0;
+  margin: 0;
 
-  background: black;
-
-  border-radius: 10px;
+  background: #000;
 }
 
-/* ------------------------------
-   拡大表示の文字
------------------------------- */
+/* =========================
+   拡大表示のタイトル説明
+========================= */
 
 .lightbox-text {
-  padding: 18px 24px 24px;
+  flex: 1;
+
+  padding: 14px 24px 18px;
+
   text-align: center;
+
+  background: #111827;
 }
 
 .lightbox-text h2 {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
+
   font-size: 24px;
 }
 
@@ -270,49 +280,65 @@ footer {
 
   color: #d1d5db;
 
-  line-height: 1.7;
+  line-height: 1.6;
 
   font-size: 16px;
 }
 
-/* ------------------------------
+/* =========================
    閉じるボタン
------------------------------- */
+========================= */
 
 .close-button {
   position: fixed;
 
-  top: 14px;
+  top: 12px;
   right: 18px;
 
   border: 0;
 
-  background: transparent;
+  background: rgba(0, 0, 0, 0.35);
 
   color: white;
 
-  font-size: 44px;
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  font-size: 38px;
+  line-height: 1;
 
   cursor: pointer;
 
   z-index: 1100;
 }
 
-/* ------------------------------
+/* =========================
    タブレット
    2列
------------------------------- */
+========================= */
 
 @media (max-width: 840px) {
+
   .gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .lightbox-inner {
+    width: 94vw;
+    height: 90vh;
+  }
+
+  .lightbox img {
+    height: 76vh;
+  }
 }
 
-/* ------------------------------
+/* =========================
    スマホ
    必ず1列
------------------------------- */
+========================= */
 
 @media (max-width: 560px) {
 
@@ -334,36 +360,29 @@ footer {
     font-size: 14px;
   }
 
-  /* カテゴリボタン */
+  /* カテゴリ */
 
   .toolbar {
     padding: 22px 0 16px;
     gap: 8px;
-
     justify-content: center;
   }
 
   .filter-button {
     padding: 8px 12px;
-
     font-size: 14px;
   }
 
-  /* ギャラリー */
+  /* ギャラリー1列 */
 
   .gallery {
     grid-template-columns: 1fr;
-
     gap: 16px;
-
     padding-bottom: 36px;
   }
 
-  /* カード */
-
   .card {
     width: 100%;
-
     border-radius: 12px;
   }
 
@@ -377,7 +396,6 @@ footer {
 
   .card-body p {
     font-size: 14px;
-
     line-height: 1.6;
   }
 
@@ -385,9 +403,10 @@ footer {
     font-size: 11px;
   }
 
-  /* --------------------------
+  /* =====================
      スマホ拡大表示
-  -------------------------- */
+     大きすぎないサイズ
+  ===================== */
 
   .lightbox {
     padding: 12px;
@@ -395,22 +414,26 @@ footer {
 
   .lightbox-inner {
     width: 94vw;
+    height: auto;
 
     max-height: 88vh;
+
+    display: block;
+
+    overflow: auto;
 
     border-radius: 12px;
   }
 
-  /* 拡大画像も4:3固定 */
-
   .lightbox img {
     width: 88vw;
+    height: auto;
 
     aspect-ratio: 4 / 3;
 
     object-fit: contain;
 
-    margin-top: 18px;
+    margin: 18px auto 0;
 
     border-radius: 8px;
   }
@@ -429,16 +452,18 @@ footer {
 
   .close-button {
     top: 8px;
-    right: 12px;
+    right: 10px;
 
-    font-size: 38px;
+    width: 42px;
+    height: 42px;
+
+    font-size: 34px;
   }
 
   /* フッター */
 
   footer {
     padding: 18px;
-
     font-size: 13px;
   }
 }
